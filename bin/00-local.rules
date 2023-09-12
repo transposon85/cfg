@@ -1,0 +1,2 @@
+SUBSYSTEM=="input", ACTION=="add", RUN+="/home/tristan/bin/kbd.sh", OWNER="tristan"
+#SUBSYSTEM=="input", ACTION=="add", RUN+="/usr/local/bin/trigger.sh", OWNER="tristan"
