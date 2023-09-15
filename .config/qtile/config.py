@@ -23,14 +23,21 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+import os
 
-from libqtile import bar, layout, widget
+import subprocess
+
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = "alacritty"
+
+@hook.subscribe.startup_once
+def autostart():
+    home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
+    subprocess.Popen([home])
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -127,35 +134,37 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
         bottom=bar.Bar(
-            [
-                #widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %A %I:%M%p  "),
-                widget.PulseVolume(),
-                widget.Battery(
-                    charge_char='󰂄',
-                    discharge_char='󰂎',
-                    update_interval=2,
-                    full_char='󰁹',
-                    unknown_char='󰁹',
-                    format='{char}{percent:2.0%}'
+                [
+                    #widget.CurrentLayout(),
+                    widget.GroupBox(),
+                    widget.Prompt(),
+                    widget.WindowName(),
+                    widget.Chord(
+                        chords_colors={
+                            "launch": ("#ff0000", "#ffffff"),
+                        },
+                        name_transform=lambda name: name.upper(),
                     ),
-                #widget.QuickExit(),
-            ],
+                    # widget.StatusNotifier(),
+                    widget.Systray(),
+                    widget.Clock(format="%Y-%m-%d %A %I:%M%p  "),
+                    # widget.PulseVolume(),
+                    widget.Battery(
+                        charge_char='󰂄',
+                        discharge_char='󰂎',
+                        update_interval=2,
+                        full_char='󰁹',
+                        unknown_char='󰁹',
+                        format='{char}{percent:2.0%}'
+                        ),
+                    #widget.QuickExit(),
+                ],
             24,
+            ),
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-        ),
+            wallpaper='~/Pictures/wallpapers/hubble_25th_anniversary.jpg',
+            wallpaper_mode='fill',
     ),
 ]
 
