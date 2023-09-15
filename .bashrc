@@ -12,8 +12,13 @@ alias ..='cd ..'
 alias cl='clear'
 alias nv=nvim
 alias vn=nvim
+alias vim=nvim
 alias sudo='sudo '
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+
+alias sbb='sudo !!'
+alias sp='sudo pacman -S '
 
 snv(){
     sudo -E nvim "$1"

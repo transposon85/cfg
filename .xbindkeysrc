@@ -66,6 +66,14 @@
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
   XF86AudioMicMute
 
+# Increase brightness by 5%
+"brightnessctl set +5%"
+  XF86MonBrightnessUp
+
+# Decrease brightness by 5%
+"brightnessctl set 5%-"
+  XF86MonBrightnessDown
+
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
 #
