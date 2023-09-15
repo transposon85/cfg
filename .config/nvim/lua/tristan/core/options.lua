@@ -1,6 +1,10 @@
 local opt = vim.opt
 
--- line numbers
+-- Turn on guicolors
+opt.termguicolors = true
+
+-- line numbers, both absolute and relative
+opt.number = true
 opt.relativenumber = true
 
 -- tabs & indentation
@@ -25,3 +29,6 @@ opt.wrap = false
 -- split windows
 opt.splitright = true -- split vertical windows to the right
 opt.splitbelow = true -- split horzontal windows to the bottom
+
+-- attempt to get mason working
+vim.cmd('syntax enable')
