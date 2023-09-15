@@ -27,7 +27,7 @@
 *.color7: #e4e4e4
 *.color15: #ffffff
 
-URxvt*font: xft:DejaVuSansMono:size=14:antialias=true
+URxvt.font:xft:HackNerdFont:style=Regular:size=14
 URxvt*borderLess: false
 URxvt*externalBorder: 0
 URxvt*internalBorder: 4
