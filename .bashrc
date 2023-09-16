@@ -15,11 +15,8 @@ alias vn=nvim
 alias vim=nvim
 alias sudo='sudo '
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 alias nvkey='nvim $VIMKEYS'
 alias nvopt='nvim $VIMOPTS'
-
-
 alias sbb='sudo !!'
 alias sp='sudo pacman -S '
 

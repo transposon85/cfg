@@ -11,13 +11,12 @@ keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically"})
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally"})
 keymap.set("n", "<leader>sx", "<CMD>close<CR>", { desc = "Closes split"})
 
-
 -- buffer navigation
 keymap.set("n", "<leader>b", ":buffers<CR>:buffer<Space>", { desc = "Show buffer list and prompt buffer number"})
 
 -- write and quit shortcuts
 keymap.set("n", "<leader>w", "<CMD>wall<CR>", { desc = "write all buffers"})
-keymap.set("n", "<leader>q", "<CMD>wq<CR>", { desc = "write and quit current buffer"})
+keymap.set("n", "<leader>q", "<CMD>qall<CR>", { desc = "quit all buffers"})
 keymap.set("n", "<leader>bd", "<CMD>bd<CR>", { desc = "discard current buffer"})
 keymap.set("n", "<leader>Q", "<CMD>qall!<CR>", { desc = "quit out of all, forcefully"})
 --keymap.set("n", "<leader>", "<CMD>wq<CR>", { desc = "write and quit current buffer"})
