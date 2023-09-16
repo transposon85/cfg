@@ -16,8 +16,17 @@ return{
 
     local lspkind = require('lspkind')
 
+    local keymap = vim.api.nvim_set_keymap
+
+    local opts = { noremap = true, silent = true }
+
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require('luasnip.loaders.from_vscode').lazy_load()
+
+    keymap("i", "<c-l>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+    keymap("s", "<c-l>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+    keymap("i", "<c-h>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+    keymap("s", "<c-h>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
     cmp.setup({
       completion = {
