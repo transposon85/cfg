@@ -1,20 +1,4 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
 # Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -66,6 +50,11 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key(
+        [mod], "f",
+        lazy.window.toggle_fullscreen(),
+        desc="Toggle fullscreen",
+    ),
+    Key(
         [mod, "shift"],
         "Return",
         lazy.layout.toggle_split(),
@@ -80,6 +69,7 @@ keys = [
     Key([mod], "d", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Left", lazy.screen.prev_group(), desc="Move to previous group"),
     Key([mod], "Right", lazy.screen.next_group(), desc="Move to next group"),
+    Key([mod], "Up", lazy.next_screen(), desc="Move to next monitor"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -110,12 +100,12 @@ for i in groups:
 
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
+    # layout.Max(),
+    # layout.MonadTall(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -135,8 +125,8 @@ screens = [
     Screen(
         bottom=bar.Bar(
                 [
-                    #widget.CurrentLayout(),
                     widget.GroupBox(),
+                    #widget.CurrentLayout(),
                     widget.Prompt(),
                     widget.WindowName(),
                     widget.Chord(
@@ -148,24 +138,33 @@ screens = [
                     # widget.StatusNotifier(),
                     widget.Systray(),
                     widget.Clock(format="%Y-%m-%d %A %I:%M%p  "),
-                    # widget.PulseVolume(),
+                    widget.PulseVolume(
+                        fmt=' 󰖀 {}  ',
+                        limit_max_volume=True,
+                    ),
                     widget.Battery(
                         charge_char='󰂄',
                         discharge_char='󰂎',
                         update_interval=2,
                         full_char='󰁹',
                         unknown_char='󰁹',
-                        format='{char}{percent:2.0%}'
+                        format='{char}{percent:2.0%} '
                         ),
                     #widget.QuickExit(),
-                ],
-            24,
-            ),
+                ], 24,),
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             wallpaper='~/Pictures/wallpapers/hubble_25th_anniversary.jpg',
             wallpaper_mode='fill',
     ),
+     Screen(
+        bottom=bar.Bar([
+            widget.GroupBox(),
+            #widget.CurrentLayout(),
+            ], 24),
+            wallpaper='~/Pictures/wallpapers/hubble_25th_anniversary.jpg',
+            wallpaper_mode='fill',
+        ),
 ]
 
 # Drag floating layouts.
