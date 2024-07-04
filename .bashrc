@@ -20,6 +20,8 @@ alias nvopt='nvim $VIMOPTS'
 alias sbb='sudo !!'
 alias sp='sudo pacman -S '
 
+alias monitor_setup='xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --right-of eDP-1'
+
 snv(){
     sudo -E nvim "$1"
 }
@@ -28,3 +30,9 @@ snv(){
 #sudo() { if alias "$1" &> /dev/null ; then $(type "$1" | sed -E 's/^.*`(.*).$/\1/') "${@:2}" ; else command sudo $@ ; fi }
 
 PS1='[\u@\h \W]\$ '
+
+# Add rye to path
+# source "$HOME/.rye/env"
+
+# Created by `pipx` on 2023-09-18 16:57:35
+export PATH="$PATH:/home/tristan/.local/bin"
