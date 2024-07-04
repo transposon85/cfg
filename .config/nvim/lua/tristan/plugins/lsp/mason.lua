@@ -12,7 +12,10 @@ return {
                package_pending = "➜",
                package_uninstalled = "✗"
            }
+         },
+         ensure_installed = {
+           "pyright"
          }
        })
-  end,
+  end
 }

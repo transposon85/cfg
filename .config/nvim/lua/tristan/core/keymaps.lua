@@ -17,7 +17,7 @@ keymap.set("n", "<leader>b", ":buffers<CR>:buffer<Space>", { desc = "Show buffer
 -- write and quit shortcuts
 keymap.set("n", "<leader>w", "<CMD>wall<CR>", { desc = "write all buffers"})
 keymap.set("n", "<leader>q", "<CMD>qall<CR>", { desc = "quit all buffers"})
-keymap.set("n", "<leader>bd", "<CMD>bd<CR>", { desc = "discard current buffer"})
+keymap.set("n", "<Space>q", "<CMD>bd<CR>", { desc = "discard current buffer"})
 keymap.set("n", "<leader>Q", "<CMD>qall!<CR>", { desc = "quit out of all, forcefully"})
 --keymap.set("n", "<leader>", "<CMD>wq<CR>", { desc = "write and quit current buffer"})
 
