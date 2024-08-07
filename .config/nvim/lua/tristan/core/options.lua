@@ -5,7 +5,7 @@ opt.termguicolors = true
 
 -- line numbers, both absolute and relative
 opt.number = true
-opt.relativenumber = true
+-- opt.relativenumber = true
 
 -- tabs & indentation
 opt.tabstop = 2

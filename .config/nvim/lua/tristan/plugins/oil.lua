@@ -9,7 +9,7 @@ return {
 
         view_options = {
             -- Show files and directories that start with "."
-            show_hidden = true,
+            show_hidden = false,
             -- This function defines what is considered a "hidden" file
             is_hidden_file = function(name, bufnr)
               return vim.startswith(name, ".")
@@ -48,6 +48,17 @@ return {
             ["gx"] = "actions.open_external",
             ["g."] = "actions.toggle_hidden",
             ["g\\"] = "actions.toggle_trash",
+            ["gd"] = {
+                  desc = "Toggle file detail view",
+                  callback = function()
+                  detail = not detail
+                  if detail then
+                  require("oil").set_columns({ "icon", "permissions", "size" })
+                  else
+                  require("oil").set_columns({ "icon" })
+                  end
+                  end,
+                },
           }
     }
   end
