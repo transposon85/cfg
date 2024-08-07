@@ -64,9 +64,11 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod], "c", lazy.reload_config(), desc="Reload the config"),
+    # Launch Rofi as a run dialog
+    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="launch Rofi run dialog"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "d", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "d", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Left", lazy.screen.prev_group(), desc="Move to previous group"),
     Key([mod], "Right", lazy.screen.next_group(), desc="Move to next group"),
     Key([mod], "Up", lazy.next_screen(), desc="Move to next monitor"),
