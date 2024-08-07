@@ -21,6 +21,13 @@ alias nvopt='nvim $VIMOPTS'
 alias sp='sudo pacman -S '
 alias monitor_setup='xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --right-of eDP-1'
 
+#alias cntrl_esc='setxkbmap -option 'caps:ctrl_modifier';xcape -e 'Caps_Lock=Escape'&'
+alias swapesc='setxkbmap -option caps:swapescape'
+
+alias remove_orphans='pacman -Rns $(pacman -Qdtq)'
+
+alias nq='NVIM_APPNAME=nvim-quarto nvim' # quarto kickstarter
+
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 
@@ -30,10 +37,14 @@ snv(){
 }
 
 # Function to fuzzily find file and open with nvim
-nf(){ nvim $(fzf --query "$1"); }
+# The function won't open nvim if you ctl-s out of fzf
+# The function works because && is treated as and, and when tmp is blank it evaluates to false and nvim is never run.
+# nf() { tmp=$(fzf --query "$1") && [[ $tmp ]] && nvim "$tmp"; }
+# This function does the same thing, but the -r means no run if empty.
+nf() { fzf --query "$1" | xargs -r nvim; }
 
 # Function to fuzzily find directory and cd there
-sd(){ cd ~ && cd $(find * -type d | fzf --query "$1"); }
+sd(){ cd ~ && cd $(find . -type d | fzf --query "$1"); }
 
 #alias sbb='sudo "$BASH" -c "$(history -p !!)"'
 #sudo() { if alias "$1" &> /dev/null ; then $(type "$1" | sed -E 's/^.*`(.*).$/\1/') "${@:2}" ; else command sudo $@ ; fi }
